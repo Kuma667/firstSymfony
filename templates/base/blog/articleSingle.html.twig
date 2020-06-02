@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+{% block title %}Blog{% endblock %}
+
+{% block stylesheets%}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+{% endblock %}
+
+{% block body %}
+	
+<h1 class="text-center mt-3 mb-5"><span class="souligne">{{ article.title }}</span></h1>
+<a class="btn btn-primary" href="{{ path('articleList') }}">Retour au blog</a>
+<a class="btn btn-warning" href="{{ path('articleEdit', {id:article.id }) }}">Editer l'article</a>
+	
+	
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<p class="lead">
+			{{ article.text|nl2br }}
+			<br>
+			<br>
+			</p>
+		</div>
+	</div>
+	
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/script.js') }}"></script>
+	
+{% endblock %}

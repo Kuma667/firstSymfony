@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets%}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+{% endblock %}
+
+{% block body %}
+	
+<h1 class="mt-3 mb-5 text-center"><span class="souligne">Contact</span></h1>
+	<div class="row">
+		<div class="col-md-12">
+			{% for label, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ label }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+			<form method="POST" action="{{ path('contact') }}">
+				<label for="email">Votre email</label>
+				<input name="email" type="email" class="form-control mb-3" placeholder="Email">
+				<label for="message">Votre message</label>
+				<textarea name="message" class="form-control mb-3" placeholder="Message"></textarea>
+				<input type="hidden" name="formEnvoi">
+				<button type="submit" class="btn btn-info form-control">Envoyer</button>
+			</form>
+			<p class="lead">Pour toute demande professionnelle, me contacter via <a href="{{ path('contactPro') }}">ce formulaire </a></p>
+		</div>
+	</div>
+	
+	
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/script.js') }}"></script>
+	
+{% endblock %}

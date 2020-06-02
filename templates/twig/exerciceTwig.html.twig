@@ -1,0 +1,47 @@
+{% extends 'twig/base.html.twig' %}
+
+{% block title %}Hello TwigController!{% endblock %}
+
+{% block body %}
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+	{% for user in users %}
+		<div class="mb-5">
+			<h1>Bonsoir {{ user.prenom }} {{ user.nom }}! ✅</h1>
+			<b>Vous avez {{ user.age }} ans et vous habitez à {{ user.ville }}.</b><br>
+			
+			{% if user.age >= 18 %}
+				<h3>Vous êtes majeur</h3>	
+			{% else %}
+				<h3>Vous êtes mineur</h3>
+			{% endif %}
+		</div>
+	{% endfor %}
+	
+	{{ dump(users) }}
+
+	{# Boucles #}
+	{% for number in 1..5 %}
+		{{number}} ({{ number % 2 == 0 ? 'pair' : 'impair' }}) {#Condition si le chiffre est pair ou impair#}
+		<br>
+	{% endfor %}
+
+	<div class="row mt-3">
+		<div class="col-md-12">
+			{% set tab = ['Thomas','Cyril','Karan','Marine','Dimitri','Momo'] %}
+			<ul class="list-group">
+				{% for user in tab %}
+					<li class="list-group-item list-group-item-primary">{{ user }}</li>
+				{% endfor %}
+			</ul>	
+		</div>
+		
+	</div>	
+	
+
+{% endblock %}

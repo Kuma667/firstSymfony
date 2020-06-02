@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+{% block title %}Contact Pro{% endblock %}
+
+{% block stylesheets%}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+{% endblock %}
+
+{% block body %}
+	
+<h1 class="mt-3 mb-5 text-center"><span class="souligne">Contact Pro</span></h1>
+	
+	
+		
+			{% for label, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ label }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+			<form method="POST" action="{{ path('contactPro') }}">
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nom">Nom</label>
+						<input name="nom" type="text" class="form-control mb-3" placeholder="Nom">
+					</div>
+					<div class="col-md-6">
+						<label for="prenom">Prénom</label>
+						<input name="prenom" type="text" class="form-control mb-3" placeholder="Prénom">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="societe">Société</label>
+						<input name="societe" type="text" class="form-control mb-3" placeholder="Société">
+					</div>
+					<div class="col-md-6">
+						<label for="sujet">Sujet</label>
+						<input name="sujet" type="text" class="form-control mb-3" placeholder="Sujet">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="email">Votre email</label>
+						<input name="email" type="email" class="form-control mb-3" placeholder="Email">
+					</div>
+					<div class="col-md-6">
+						<label for="message">Votre message</label>
+						<textarea name="message" class="form-control mb-3" placeholder="Message"></textarea>
+					</div>
+				</div>
+				<input type="hidden" name="formEnvoi">
+				<button type="submit" class="btn btn-info form-control">Envoyer</button>
+			</form>
+	
+	
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/script.js') }}"></script>
+	
+{% endblock %}

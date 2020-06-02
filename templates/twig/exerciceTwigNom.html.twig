@@ -1,0 +1,125 @@
+{% extends 'twig/base.html.twig' %}
+
+{% block title %}Hello TwigController!{% endblock %}
+
+{% block body %}
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+	<h1>Hello</h1>
+	<a href="{{ path('exerciceTwig') }}" class="btn btn-info">Page Exercice Twig</a>
+	{% for personne in personnes %}
+		<p>
+			<b>{{personne.nom}}
+			{{personne.prenom}}</b>
+			({{personne.statut}})
+			Date de naissance : {{personne.naissance|date('Y-m-d')}}
+		</p>
+	{% endfor %}
+	
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>Les Dupont</h3>
+			{% for personne in personnes %}
+				{% if personne.nom == "Dupont" %}
+				<p>
+					<b>{{personne.nom}}
+					{{personne.prenom}}</b>
+					({{personne.statut}})
+					Date de naissance : {{personne.naissance|date('Y-m-d')}}
+				</p>
+			{% endif %}
+	{% endfor %}
+		</div>
+	</div>
+	
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>Les 3 premières lignes, noms de famille en majuscules</h3>
+			{% for personne in personnes|slice(0,3) %}
+				<p>
+					<b>{{personne.nom|upper}}
+					{{personne.prenom}}</b>
+					({{personne.statut}})
+					Date de naissance : {{personne.naissance|date('Y-m-d')}}
+				</p>
+
+	{% endfor %}
+		</div>
+	</div>
+	
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>Nés après 1950</h3>
+			{% for personne in personnes %}
+				{% if personne.naissance|date('Y') > 1950 %}
+				<p>
+					<b>{{personne.nom}}
+					{{personne.prenom}}</b>
+					({{personne.statut}})
+					Date de naissance : {{personne.naissance|date('Y-m-d')}}
+				</p>
+			{% endif %}
+	{% endfor %}
+		</div>
+	</div>
+	
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>Du plus vieux au plus jeune</h3>
+			{% for personne in personnes|sort((a,b) => a.naissance <=> b.naissance) %}
+				<p>
+					<b>{{personne.nom}}
+					{{personne.prenom}}</b>
+					({{personne.statut}})
+					Date de naissance : {{personne.naissance|date('Y-m-d')}}
+				</p>
+			{% endfor %}
+		</div>
+	</div>
+	
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>Colorés</h3>
+			{% for personne in personnes %}
+				<p class="text-{{ loop.first ? 'primary'}}{{ loop.last ? 'danger'}}">
+					<b>{{personne.nom}}
+					{{personne.prenom}}</b>
+					({{personne.statut}})
+					Date de naissance : {{personne.naissance|date('Y-m-d')}}
+				</p>
+			{% endfor %}
+		</div>
+	</div>
+	
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h3>Saut de ligne toutes les 2 lignes</h3>
+			{% for personne in personnes %}
+				<p>
+					<b>{{personne.nom}}
+					{{personne.prenom}}</b>
+					({{personne.statut}})
+					Date de naissance : {{personne.naissance|date('Y-m-d')}}
+				</p>
+				{% if loop.index is even %}
+					<br>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+	
+	{{ '10.565'|prix('€') }}
+	<br>
+	{{ blogItem(2) }}
+	
+	
+	
+	
+    
+
+{% endblock %}

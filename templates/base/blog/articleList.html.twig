@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block title %}Blog{% endblock %}
+
+{% block stylesheets%}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+{% endblock %}
+
+{% block body %}
+	
+<h1 class="text-center mt-3 mb-5"><span class="souligne">Liste des articles</span></h1>
+	
+	<div class="row">
+		{% set prenom = "Cyril" %}
+		{% for article in articles %}
+			<div class="col-md-6 col-lg-4 col-sm-12">
+				{% include 'base/blog/_partials/blogItem.html.twig' with { sousTitre : false, article: article, prenom: prenom } only %}
+			</div>
+		{% endfor %}
+	</div>
+	
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/script.js') }}"></script>
+	
+{% endblock %}

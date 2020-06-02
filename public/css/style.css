@@ -1,0 +1,15 @@
+/*
+#pageContent{
+	height: 100vh;
+}
+*/
+
+#footer {
+    clear: both;
+    position: sticky;
+	padding: 10px;
+}
+
+.souligne{
+	border-bottom: 2px solid #000000;
+}

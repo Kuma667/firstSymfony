@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem;">
+	<img class="card-img-top" src="{{ asset('images/etchebest.jpg') }}" alt="Card image cap">
+	<div class="card-body">
+		<h5 class="card-title">{{ article.title }} - {{ prenom }} </h5>
+		{% if sousTitre %}
+			<h6>{{ article.sousTitre }}</h6>
+		{% endif %}
+		<p class="card-text">{{ article.text }}</p>
+		<a href="{{ path('articleSingle', {id: article.id}) }}" class="btn btn-primary">Voir l'article</a>
+		<a href="{{ path('articleEdit', {id: article.id}) }}" class="btn btn-warning">Editer l'article</a>
+	</div>
+</div>
