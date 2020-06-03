@@ -72,4 +72,15 @@ class EmailService{
 		
 		$this->mailer->send($accuseMail);
 	}
+	
+	public function sendToken($mail, $token){
+		$msg = (new TemplatedEmail())
+			->from($this->MY_EMAIL)
+			->to($mail)
+			->subject('Confirmation d\'inscription')
+			->htmlTemplate('email/registerConfirm.email.twig')
+			->context([
+				'mail' => $mail
+			]);
+	}
 }

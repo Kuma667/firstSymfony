@@ -165,7 +165,7 @@ class BaseController extends AbstractController
      * @Route("/contact", name="contact")
      */
 	public function formContactPro(){
-		$contact = new Contacts();
+		$contact = new ContactPro();
 		$form = $this->createForm(ContactProFormType::class, $contact);
 		
 		return $this->render('base/pages/contact.html.twig',[
